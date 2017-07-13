@@ -74,6 +74,12 @@ namespace Grpc.Core.Internal
         public readonly Delegates.grpcsharp_batch_context_recv_close_on_server_cancelled_delegate grpcsharp_batch_context_recv_close_on_server_cancelled;
         public readonly Delegates.grpcsharp_batch_context_destroy_delegate grpcsharp_batch_context_destroy;
 
+        //public readonly Delegates.grpcsharp_request_call_context_create_delegate grpcsharp_request_call_context_create;
+        //public readonly Delegates.grpcsharp_request_call_context_call_delegate grpcsharp_request_call_context_call;
+        //public readonly Delegates.grpcsharp_request_call_context_method_delegate grpcsharp_request_call_context_method;
+        //public readonly Delegates.grpcsharp_request_call_context_host_delegate grpcsharp_request_call_context_host;
+        //public readonly Delegates.grpcsharp_request_call_context_deadline_delegate grpcsharp_request_call_context_deadline;
+        //public readonly Delegates.grpcsharp_request_call_context_request_metadata_delegate grpcsharp_request_call_context_request_metadata;
         public readonly Delegates.grpcsharp_request_call_context_destroy_delegate grpcsharp_request_call_context_destroy;
 
         public readonly Delegates.grpcsharp_composite_call_credentials_create_delegate grpcsharp_composite_call_credentials_create;
@@ -116,7 +122,8 @@ namespace Grpc.Core.Internal
 
         public readonly Delegates.grpcsharp_sizeof_grpc_event_delegate grpcsharp_sizeof_grpc_event;
 
-        public readonly Delegates.grpcsharp_completion_queue_create_delegate grpcsharp_completion_queue_create;
+        public readonly Delegates.grpcsharp_completion_queue_create_async_delegate grpcsharp_completion_queue_create_async;
+        public readonly Delegates.grpcsharp_completion_queue_create_sync_delegate grpcsharp_completion_queue_create_sync;
         public readonly Delegates.grpcsharp_completion_queue_shutdown_delegate grpcsharp_completion_queue_shutdown;
         public readonly Delegates.grpcsharp_completion_queue_next_delegate grpcsharp_completion_queue_next;
 #if UNITY_EDITOR
@@ -139,8 +146,17 @@ namespace Grpc.Core.Internal
         public readonly Delegates.grpcsharp_metadata_credentials_create_from_plugin_delegate grpcsharp_metadata_credentials_create_from_plugin;
         public readonly Delegates.grpcsharp_metadata_credentials_notify_from_plugin_delegate grpcsharp_metadata_credentials_notify_from_plugin;
 
+        //public readonly Delegates.grpcsharp_ssl_server_credentials_create_delegate grpcsharp_ssl_server_credentials_create;
         public readonly Delegates.grpcsharp_server_credentials_release_delegate grpcsharp_server_credentials_release;
 
+        //public readonly Delegates.grpcsharp_server_create_delegate grpcsharp_server_create;
+        //public readonly Delegates.grpcsharp_server_register_completion_queue_delegate grpcsharp_server_register_completion_queue;
+        //public readonly Delegates.grpcsharp_server_add_insecure_http2_port_delegate grpcsharp_server_add_insecure_http2_port;
+        //public readonly Delegates.grpcsharp_server_add_secure_http2_port_delegate grpcsharp_server_add_secure_http2_port;
+        //public readonly Delegates.grpcsharp_server_start_delegate grpcsharp_server_start;
+        //public readonly Delegates.grpcsharp_server_request_call_delegate grpcsharp_server_request_call;
+        //public readonly Delegates.grpcsharp_server_cancel_all_calls_delegate grpcsharp_server_cancel_all_calls;
+        //public readonly Delegates.grpcsharp_server_shutdown_and_notify_callback_delegate grpcsharp_server_shutdown_and_notify_callback;
         public readonly Delegates.grpcsharp_server_destroy_delegate grpcsharp_server_destroy;
 
         public readonly Delegates.grpcsharp_call_auth_context_delegate grpcsharp_call_auth_context;
@@ -157,6 +173,8 @@ namespace Grpc.Core.Internal
 
         public readonly Delegates.grpcsharp_test_callback_delegate grpcsharp_test_callback;
         public readonly Delegates.grpcsharp_test_nop_delegate grpcsharp_test_nop;
+
+        public readonly Delegates.grpcsharp_test_override_method_delegate grpcsharp_test_override_method;
 
         #endregion
 
@@ -176,6 +194,12 @@ namespace Grpc.Core.Internal
             this.grpcsharp_batch_context_recv_close_on_server_cancelled = NativeCalls.grpcsharp_batch_context_recv_close_on_server_cancelled;
             this.grpcsharp_batch_context_destroy = NativeCalls.grpcsharp_batch_context_destroy;
 
+            //this.grpcsharp_request_call_context_create = NativeCalls.grpcsharp_request_call_context_create;
+            //this.grpcsharp_request_call_context_call = NativeCalls.grpcsharp_request_call_context_call;
+            //this.grpcsharp_request_call_context_method = NativeCalls.grpcsharp_request_call_context_method;
+            //this.grpcsharp_request_call_context_host = NativeCalls.grpcsharp_request_call_context_host;
+            //this.grpcsharp_request_call_context_deadline = NativeCalls.grpcsharp_request_call_context_deadline;
+            //this.grpcsharp_request_call_context_request_metadata = NativeCalls.grpcsharp_request_call_context_request_metadata;
             this.grpcsharp_request_call_context_destroy = NativeCalls.grpcsharp_request_call_context_destroy;
 
             this.grpcsharp_composite_call_credentials_create = NativeCalls.grpcsharp_composite_call_credentials_create;
@@ -218,7 +242,8 @@ namespace Grpc.Core.Internal
 
             this.grpcsharp_sizeof_grpc_event = NativeCalls.grpcsharp_sizeof_grpc_event;
 
-            this.grpcsharp_completion_queue_create = NativeCalls.grpcsharp_completion_queue_create;
+            this.grpcsharp_completion_queue_create_async = NativeCalls.grpcsharp_completion_queue_create_async;
+            this.grpcsharp_completion_queue_create_sync = NativeCalls.grpcsharp_completion_queue_create_sync;
             this.grpcsharp_completion_queue_shutdown = NativeCalls.grpcsharp_completion_queue_shutdown;
             this.grpcsharp_completion_queue_next = NativeCalls.grpcsharp_completion_queue_next;
 #if UNITY_EDITOR
@@ -241,8 +266,17 @@ namespace Grpc.Core.Internal
             this.grpcsharp_metadata_credentials_create_from_plugin = NativeCalls.grpcsharp_metadata_credentials_create_from_plugin;
             this.grpcsharp_metadata_credentials_notify_from_plugin = NativeCalls.grpcsharp_metadata_credentials_notify_from_plugin;
 
+            //this.grpcsharp_ssl_server_credentials_create = NativeCalls.grpcsharp_ssl_server_credentials_create;
             this.grpcsharp_server_credentials_release = NativeCalls.grpcsharp_server_credentials_release;
 
+            //this.grpcsharp_server_create = NativeCalls.grpcsharp_server_create;
+            //this.grpcsharp_server_register_completion_queue = NativeCalls.grpcsharp_server_register_completion_queue;
+            //this.grpcsharp_server_add_insecure_http2_port = NativeCalls.grpcsharp_server_add_insecure_http2_port;
+            //this.grpcsharp_server_add_secure_http2_port = NativeCalls.grpcsharp_server_add_secure_http2_port;
+            //this.grpcsharp_server_start = NativeCalls.grpcsharp_server_start;
+            //this.grpcsharp_server_request_call = NativeCalls.grpcsharp_server_request_call;
+            //this.grpcsharp_server_cancel_all_calls = NativeCalls.grpcsharp_server_cancel_all_calls;
+            //this.grpcsharp_server_shutdown_and_notify_callback = NativeCalls.grpcsharp_server_shutdown_and_notify_callback;
             this.grpcsharp_server_destroy = NativeCalls.grpcsharp_server_destroy;
 
             this.grpcsharp_call_auth_context = NativeCalls.grpcsharp_call_auth_context;
@@ -259,6 +293,7 @@ namespace Grpc.Core.Internal
 
             this.grpcsharp_test_callback = NativeCalls.grpcsharp_test_callback;
             this.grpcsharp_test_nop = NativeCalls.grpcsharp_test_nop;
+            this.grpcsharp_test_override_method = NativeCalls.grpcsharp_test_override_method;
         }
 
         /// <summary>
@@ -288,6 +323,12 @@ namespace Grpc.Core.Internal
             public delegate int grpcsharp_batch_context_recv_close_on_server_cancelled_delegate(BatchContextSafeHandle ctx);
             public delegate void grpcsharp_batch_context_destroy_delegate(IntPtr ctx);
 
+            //public delegate RequestCallContextSafeHandle grpcsharp_request_call_context_create_delegate();
+            //public delegate CallSafeHandle grpcsharp_request_call_context_call_delegate(RequestCallContextSafeHandle ctx);
+            //public delegate IntPtr grpcsharp_request_call_context_method_delegate(RequestCallContextSafeHandle ctx, out UIntPtr methodLength);
+            //public delegate IntPtr grpcsharp_request_call_context_host_delegate(RequestCallContextSafeHandle ctx, out UIntPtr hostLength);
+            //public delegate Timespec grpcsharp_request_call_context_deadline_delegate(RequestCallContextSafeHandle ctx);
+            //public delegate IntPtr grpcsharp_request_call_context_request_metadata_delegate(RequestCallContextSafeHandle ctx);
             public delegate void grpcsharp_request_call_context_destroy_delegate(IntPtr ctx);
 
             public delegate CallCredentialsSafeHandle grpcsharp_composite_call_credentials_create_delegate(CallCredentialsSafeHandle creds1, CallCredentialsSafeHandle creds2);
@@ -305,11 +346,11 @@ namespace Grpc.Core.Internal
             public delegate CallError grpcsharp_call_start_duplex_streaming_delegate(CallSafeHandle call,
                 BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
             public delegate CallError grpcsharp_call_send_message_delegate(CallSafeHandle call,
-                BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, bool sendEmptyInitialMetadata);
+                BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, int sendEmptyInitialMetadata);
             public delegate CallError grpcsharp_call_send_close_from_client_delegate(CallSafeHandle call,
                 BatchContextSafeHandle ctx);
             public delegate CallError grpcsharp_call_send_status_from_server_delegate(CallSafeHandle call,
-                BatchContextSafeHandle ctx, StatusCode statusCode, byte[] statusMessage, UIntPtr statusMessageLen, MetadataArraySafeHandle metadataArray, bool sendEmptyInitialMetadata,
+                BatchContextSafeHandle ctx, StatusCode statusCode, byte[] statusMessage, UIntPtr statusMessageLen, MetadataArraySafeHandle metadataArray, int sendEmptyInitialMetadata,
                 byte[] optionalSendBuffer, UIntPtr optionalSendBufferLen, WriteFlags writeFlags);
             public delegate CallError grpcsharp_call_recv_message_delegate(CallSafeHandle call,
                 BatchContextSafeHandle ctx);
@@ -344,7 +385,8 @@ namespace Grpc.Core.Internal
 
             public delegate int grpcsharp_sizeof_grpc_event_delegate();
 
-            public delegate CompletionQueueSafeHandle grpcsharp_completion_queue_create_delegate();
+            public delegate CompletionQueueSafeHandle grpcsharp_completion_queue_create_async_delegate();
+            public delegate CompletionQueueSafeHandle grpcsharp_completion_queue_create_sync_delegate();
             public delegate void grpcsharp_completion_queue_shutdown_delegate(CompletionQueueSafeHandle cq);
             public delegate CompletionQueueEvent grpcsharp_completion_queue_next_delegate(CompletionQueueSafeHandle cq);
 #if UNITY_EDITOR
@@ -367,8 +409,17 @@ namespace Grpc.Core.Internal
             public delegate CallCredentialsSafeHandle grpcsharp_metadata_credentials_create_from_plugin_delegate(NativeMetadataInterceptor interceptor);
             public delegate void grpcsharp_metadata_credentials_notify_from_plugin_delegate(IntPtr callbackPtr, IntPtr userData, MetadataArraySafeHandle metadataArray, StatusCode statusCode, string errorDetails);
 
+            //public delegate ServerCredentialsSafeHandle grpcsharp_ssl_server_credentials_create_delegate(string pemRootCerts, string[] keyCertPairCertChainArray, string[] keyCertPairPrivateKeyArray, UIntPtr numKeyCertPairs, int forceClientAuth);
             public delegate void grpcsharp_server_credentials_release_delegate(IntPtr credentials);
 
+            //public delegate ServerSafeHandle grpcsharp_server_create_delegate(ChannelArgsSafeHandle args);
+            //public delegate void grpcsharp_server_register_completion_queue_delegate(ServerSafeHandle server, CompletionQueueSafeHandle cq);
+            //public delegate int grpcsharp_server_add_insecure_http2_port_delegate(ServerSafeHandle server, string addr);
+            //public delegate int grpcsharp_server_add_secure_http2_port_delegate(ServerSafeHandle server, string addr, ServerCredentialsSafeHandle creds);
+            //public delegate void grpcsharp_server_start_delegate(ServerSafeHandle server);
+            //public delegate CallError grpcsharp_server_request_call_delegate(ServerSafeHandle server, CompletionQueueSafeHandle cq, RequestCallContextSafeHandle ctx);
+            //public delegate void grpcsharp_server_cancel_all_calls_delegate(ServerSafeHandle server);
+            //public delegate void grpcsharp_server_shutdown_and_notify_callback_delegate(ServerSafeHandle server, CompletionQueueSafeHandle cq, BatchContextSafeHandle ctx);
             public delegate void grpcsharp_server_destroy_delegate(IntPtr server);
 
             public delegate AuthContextSafeHandle grpcsharp_call_auth_context_delegate(CallSafeHandle call);
@@ -386,6 +437,7 @@ namespace Grpc.Core.Internal
 
             public delegate CallError grpcsharp_test_callback_delegate([MarshalAs(UnmanagedType.FunctionPtr)] OpCompletionDelegate callback);
             public delegate IntPtr grpcsharp_test_nop_delegate(IntPtr ptr);
+            public delegate void grpcsharp_test_override_method_delegate(string methodName, string variant);
         }
 
         static class NativeCalls
@@ -428,14 +480,23 @@ namespace Grpc.Core.Internal
             internal static extern void grpcsharp_batch_context_destroy(IntPtr ctx);
 
 
+            //internal static extern RequestCallContextSafeHandle grpcsharp_request_call_context_create();
+            //internal static extern CallSafeHandle grpcsharp_request_call_context_call(RequestCallContextSafeHandle ctx);
+            //internal static extern IntPtr grpcsharp_request_call_context_method(RequestCallContextSafeHandle ctx, out UIntPtr methodLength);
+            //internal static extern IntPtr grpcsharp_request_call_context_host(RequestCallContextSafeHandle ctx, out UIntPtr hostLength);
+            //internal static extern Timespec grpcsharp_request_call_context_deadline(RequestCallContextSafeHandle ctx);
+            //internal static extern IntPtr grpcsharp_request_call_context_request_metadata(RequestCallContextSafeHandle ctx);
+
             [DllImport(pluginName)]
             internal static extern void grpcsharp_request_call_context_destroy(IntPtr ctx);
+
 
             [DllImport(pluginName)]
             internal static extern CallCredentialsSafeHandle grpcsharp_composite_call_credentials_create(CallCredentialsSafeHandle creds1, CallCredentialsSafeHandle creds2);
 
             [DllImport(pluginName)]
             internal static extern void grpcsharp_call_credentials_release(IntPtr credentials);
+
 
             [DllImport(pluginName)]
             internal static extern CallError grpcsharp_call_cancel(CallSafeHandle call);
@@ -444,37 +505,50 @@ namespace Grpc.Core.Internal
             internal static extern CallError grpcsharp_call_cancel_with_status(CallSafeHandle call, StatusCode status, string description);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_start_unary(CallSafeHandle call, BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
+            internal static extern CallError grpcsharp_call_start_unary(CallSafeHandle call,
+                BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_start_client_streaming(CallSafeHandle call, BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
+            internal static extern CallError grpcsharp_call_start_client_streaming(CallSafeHandle call,
+                BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_start_server_streaming(CallSafeHandle call, BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
+            internal static extern CallError grpcsharp_call_start_server_streaming(CallSafeHandle call,
+                BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags,
+                MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_start_duplex_streaming(CallSafeHandle call, BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
+            internal static extern CallError grpcsharp_call_start_duplex_streaming(CallSafeHandle call,
+                BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray, CallFlags metadataFlags);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_send_message(CallSafeHandle call, BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, bool sendEmptyInitialMetadata);
+            internal static extern CallError grpcsharp_call_send_message(CallSafeHandle call,
+                BatchContextSafeHandle ctx, byte[] sendBuffer, UIntPtr sendBufferLen, WriteFlags writeFlags, int sendEmptyInitialMetadata);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_send_close_from_client(CallSafeHandle call, BatchContextSafeHandle ctx);
+            internal static extern CallError grpcsharp_call_send_close_from_client(CallSafeHandle call,
+                BatchContextSafeHandle ctx);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_send_status_from_server(CallSafeHandle call, BatchContextSafeHandle ctx, StatusCode statusCode, byte[] statusMessage, UIntPtr statusMessageLen, MetadataArraySafeHandle metadataArray, bool sendEmptyInitialMetadata, byte[] optionalSendBuffer, UIntPtr optionalSendBufferLen, WriteFlags writeFlags);
+            internal static extern CallError grpcsharp_call_send_status_from_server(CallSafeHandle call,
+                BatchContextSafeHandle ctx, StatusCode statusCode, byte[] statusMessage, UIntPtr statusMessageLen, MetadataArraySafeHandle metadataArray, int sendEmptyInitialMetadata,
+                byte[] optionalSendBuffer, UIntPtr optionalSendBufferLen, WriteFlags writeFlags);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_recv_message(CallSafeHandle call, BatchContextSafeHandle ctx);
+            internal static extern CallError grpcsharp_call_recv_message(CallSafeHandle call,
+                BatchContextSafeHandle ctx);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_recv_initial_metadata(CallSafeHandle call, BatchContextSafeHandle ctx);
+            internal static extern CallError grpcsharp_call_recv_initial_metadata(CallSafeHandle call,
+                BatchContextSafeHandle ctx);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_start_serverside(CallSafeHandle call, BatchContextSafeHandle ctx);
+            internal static extern CallError grpcsharp_call_start_serverside(CallSafeHandle call,
+                BatchContextSafeHandle ctx);
 
             [DllImport(pluginName)]
-            internal static extern CallError grpcsharp_call_send_initial_metadata(CallSafeHandle call, BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray);
+            internal static extern CallError grpcsharp_call_send_initial_metadata(CallSafeHandle call,
+                BatchContextSafeHandle ctx, MetadataArraySafeHandle metadataArray);
 
             [DllImport(pluginName)]
             internal static extern CallError grpcsharp_call_set_credentials(CallSafeHandle call, CallCredentialsSafeHandle credentials);
@@ -498,6 +572,7 @@ namespace Grpc.Core.Internal
             [DllImport(pluginName)]
             internal static extern void grpcsharp_channel_args_destroy(IntPtr args);
 
+
             [DllImport(pluginName)]
             internal static extern void grpcsharp_override_default_ssl_roots(string pemRootCerts);
 
@@ -509,6 +584,7 @@ namespace Grpc.Core.Internal
 
             [DllImport(pluginName)]
             internal static extern void grpcsharp_channel_credentials_release(IntPtr credentials);
+
 
             [DllImport(pluginName)]
             internal static extern ChannelSafeHandle grpcsharp_insecure_channel_create(string target, ChannelArgsSafeHandle channelArgs);
@@ -523,7 +599,8 @@ namespace Grpc.Core.Internal
             internal static extern ChannelState grpcsharp_channel_check_connectivity_state(ChannelSafeHandle channel, int tryToConnect);
 
             [DllImport(pluginName)]
-            internal static extern void grpcsharp_channel_watch_connectivity_state(ChannelSafeHandle channel, ChannelState lastObservedState, Timespec deadline, CompletionQueueSafeHandle cq, BatchContextSafeHandle ctx);
+            internal static extern void grpcsharp_channel_watch_connectivity_state(ChannelSafeHandle channel, ChannelState lastObservedState,
+                Timespec deadline, CompletionQueueSafeHandle cq, BatchContextSafeHandle ctx);
 
             [DllImport(pluginName)]
             internal static extern CStringSafeHandle grpcsharp_channel_get_target(ChannelSafeHandle call);
@@ -537,7 +614,10 @@ namespace Grpc.Core.Internal
 
 
             [DllImport(pluginName)]
-            internal static extern CompletionQueueSafeHandle grpcsharp_completion_queue_create();
+            internal static extern CompletionQueueSafeHandle grpcsharp_completion_queue_create_async();
+
+            [DllImport(pluginName)]
+            internal static extern CompletionQueueSafeHandle grpcsharp_completion_queue_create_sync();
 
             [DllImport(pluginName)]
             internal static extern void grpcsharp_completion_queue_shutdown(CompletionQueueSafeHandle cq);
@@ -579,8 +659,10 @@ namespace Grpc.Core.Internal
             [DllImport(pluginName)]
             internal static extern void grpcsharp_metadata_array_destroy_full(IntPtr array);
 
+
             [DllImport(pluginName)]
             internal static extern void grpcsharp_redirect_log(GprLogDelegate callback);
+
 
             [DllImport(pluginName)]
             internal static extern CallCredentialsSafeHandle grpcsharp_metadata_credentials_create_from_plugin(NativeMetadataInterceptor interceptor);
@@ -588,8 +670,19 @@ namespace Grpc.Core.Internal
             [DllImport(pluginName)]
             internal static extern void grpcsharp_metadata_credentials_notify_from_plugin(IntPtr callbackPtr, IntPtr userData, MetadataArraySafeHandle metadataArray, StatusCode statusCode, string errorDetails);
 
+            //internal static extern ServerCredentialsSafeHandle grpcsharp_ssl_server_credentials_create(string pemRootCerts, string[] keyCertPairCertChainArray, string[] keyCertPairPrivateKeyArray, UIntPtr numKeyCertPairs, int forceClientAuth);
+
             [DllImport(pluginName)]
             internal static extern void grpcsharp_server_credentials_release(IntPtr credentials);
+
+            //internal static extern ServerSafeHandle grpcsharp_server_create(ChannelArgsSafeHandle args);
+            //internal static extern void grpcsharp_server_register_completion_queue(ServerSafeHandle server, CompletionQueueSafeHandle cq);
+            //internal static extern int grpcsharp_server_add_insecure_http2_port(ServerSafeHandle server, string addr);
+            //internal static extern int grpcsharp_server_add_secure_http2_port(ServerSafeHandle server, string addr, ServerCredentialsSafeHandle creds);
+            //internal static extern void grpcsharp_server_start(ServerSafeHandle server);
+            //internal static extern CallError grpcsharp_server_request_call(ServerSafeHandle server, CompletionQueueSafeHandle cq, RequestCallContextSafeHandle ctx);
+            //internal static extern void grpcsharp_server_cancel_all_calls(ServerSafeHandle server);
+            //internal static extern void grpcsharp_server_shutdown_and_notify_callback(ServerSafeHandle server, CompletionQueueSafeHandle cq, BatchContextSafeHandle ctx);
 
             [DllImport(pluginName)]
             internal static extern void grpcsharp_server_destroy(IntPtr server);
@@ -620,6 +713,7 @@ namespace Grpc.Core.Internal
             [DllImport(pluginName)]
             internal static extern Timespec gprsharp_inf_past(ClockType clockType);
 
+
             [DllImport(pluginName)]
             internal static extern Timespec gprsharp_convert_clock_type(Timespec t, ClockType targetClock);
 
@@ -632,6 +726,9 @@ namespace Grpc.Core.Internal
 
             [DllImport(pluginName)]
             internal static extern IntPtr grpcsharp_test_nop(IntPtr ptr);
+
+            [DllImport(pluginName)]
+            internal static extern void grpcsharp_test_override_method(string methodName, string variant);
         }
     }
 }

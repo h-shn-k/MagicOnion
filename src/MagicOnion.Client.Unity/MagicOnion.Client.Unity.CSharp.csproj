@@ -229,7 +229,6 @@
     <Compile Include="Assets\Scripts\gRPC\Core\RpcException.cs" />
     <Compile Include="Assets\Scripts\gRPC\Core\Shim\GrpcCancellationToken.cs" />
     <Compile Include="Assets\Scripts\gRPC\Core\Shim\IAsyncEnumerator.cs" />
-    <Compile Include="Assets\Scripts\gRPC\Core\Shim\IntPtrEqualityComparer.cs" />
     <Compile Include="Assets\Scripts\gRPC\Core\Status.cs" />
     <Compile Include="Assets\Scripts\gRPC\Core\StatusCode.cs" />
     <Compile Include="Assets\Scripts\gRPC\Core\Utils\GrpcPreconditions.cs" />

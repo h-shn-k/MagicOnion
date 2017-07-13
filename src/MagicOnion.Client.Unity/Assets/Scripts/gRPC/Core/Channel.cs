@@ -59,6 +59,8 @@ namespace Grpc.Core
         readonly ChannelSafeHandle handle;
         readonly Dictionary<string, ChannelOption> options;
 
+        readonly IObservable<Unit> connectivityWatcherTask;
+
         bool shutdownRequested;
 
         /// <summary>
@@ -99,6 +101,9 @@ namespace Grpc.Core
                     this.handle = ChannelSafeHandle.CreateInsecure(target, nativeChannelArgs);
                 }
             }
+            // TODO(jtattermusch): Workaround for https://github.com/GoogleCloudPlatform/google-cloud-dotnet/issues/822.
+            // Remove once retries are supported in C core
+            this.connectivityWatcherTask = RunConnectivityWatcherAsync();
             GrpcEnvironment.RegisterChannel(this);
         }
 
@@ -281,7 +286,7 @@ namespace Grpc.Core
 
             handle.Dispose();
 
-            return GrpcEnvironment.ReleaseAsync();
+            return Observable.WhenAll(GrpcEnvironment.ReleaseAsync(), connectivityWatcherTask);
         }
 
         internal ChannelSafeHandle Handle
@@ -334,6 +339,76 @@ namespace Grpc.Core
             {
                 return ChannelState.Shutdown;
             }
+        }
+
+        /// <summary>
+        /// Constantly Watches channel connectivity status to work around https://github.com/GoogleCloudPlatform/google-cloud-dotnet/issues/822
+        /// </summary>
+        private IObservable<Unit> RunConnectivityWatcherAsync()
+        {
+            try
+            {
+                var lastState = State;
+                if (lastState != ChannelState.Shutdown)
+                {
+                    lock (myLock)
+                    {
+                        if (shutdownRequested)
+                        {
+                            return Observable.ReturnUnit();
+                        }
+                    }
+                }
+
+                var subject = new AsyncSubject<Unit>();
+                TryRunConnectivityWatcherAsync(subject, lastState, DateTime.UtcNow.AddSeconds(1));
+                return subject;
+            }
+            catch (ObjectDisposedException)
+            {
+                // during shutdown, channel is going to be disposed.
+            }
+
+            return Observable.ReturnUnit();
+        }
+
+        private void TryRunConnectivityWatcherAsync(AsyncSubject<Unit> subject, ChannelState lastState, DateTime? deadline = null)
+        {
+            WaitForStateChangedAsync(lastState, deadline)
+                .ContinueWith(_ =>
+                {
+                    try
+                    {
+                        lastState = State;
+
+                        if (lastState != ChannelState.Shutdown)
+                        {
+                            lock (myLock)
+                            {
+                                if (shutdownRequested)
+                                {
+                                    subject.OnNext(Unit.Default);
+                                    subject.OnCompleted();
+                                    return Observable.ReturnUnit();
+                                }
+                            }
+
+                            TryRunConnectivityWatcherAsync(subject, lastState, DateTime.UtcNow.AddSeconds(1));
+                        }
+                        else
+                        {
+                            subject.OnNext(Unit.Default);
+                            subject.OnCompleted();
+                        }
+                    }
+                    catch (ObjectDisposedException)
+                    {
+                        // during shutdown, channel is going to be disposed.
+                    }
+
+                    return Observable.ReturnUnit();
+                })
+                .Subscribe();
         }
 
         private static void EnsureUserAgentChannelOption(Dictionary<string, ChannelOption> options)
